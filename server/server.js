@@ -22,7 +22,7 @@ io.on('connection', (socket) => {
   socket.on('createMessage', (message, callback) => {
     console.log('New message', message);
     io.emit('newMessage', generateMessage(message.from, message.text))
-    callback('Thisis from the srver');
+    callback();
 
     // socket.broadcast.emit('newMessage', {
     //   from: message.from,
@@ -36,7 +36,7 @@ io.on('connection', (socket) => {
     io.emit('newLocationMessage', generateLocationMessage('Admin', coords.latitude, coords.longitude));
   })
 
-  
+
   socket.on('disconnect', () => {
     console.log("User was disconnected");
   });
